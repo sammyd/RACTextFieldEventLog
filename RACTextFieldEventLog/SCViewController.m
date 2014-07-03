@@ -7,8 +7,12 @@
 //
 
 #import "SCViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "SCEventTableViewController.h"
 
 @interface SCViewController ()
+
+@property (nonatomic, strong) SCEventTableViewController *eventsTableVC;
 
 @end
 
@@ -18,12 +22,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [self.childViewControllers enumerateObjectsUsingBlock:^(UIViewController *vc, NSUInteger idx, BOOL *stop) {
+        if([vc isKindOfClass:[SCEventTableViewController class]]) {
+            self.eventsTableVC = (SCEventTableViewController*)vc;
+        }
+    }];
+    
+    
+    [self.textField.rac_textSignal
+    subscribeNext:^(NSString *payload) {
+        [self.eventsTableVC postNewEventWithPayload:payload];
+    }];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SCViewController.h
+//  SCEventTableViewController.h
 //  RACTextFieldEventLog
 //
 //  Created by Sam Davies on 03/07/2014.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCViewController : UIViewController
+@interface SCEventTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+- (void)postNewEventWithPayload:(NSString *)payload;
 
 @end
