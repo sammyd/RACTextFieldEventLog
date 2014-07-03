@@ -10,6 +10,6 @@
 
 @interface SCEventTableViewController : UITableViewController
 
-- (void)postNewEventWithPayload:(NSString *)payload;
+- (void)postNewEventWithPayload:(NSDictionary *)payload;
 
 @end

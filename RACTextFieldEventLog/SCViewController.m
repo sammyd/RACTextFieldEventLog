@@ -30,8 +30,11 @@
     }];
     
     
-    [self.textField.rac_textSignal
-    subscribeNext:^(NSString *payload) {
+    [[self.textField.rac_textSignal
+     map:^id(NSString *value) {
+         return @{@"timestamp": [NSDate date], @"content": value};
+     }]
+    subscribeNext:^(NSDictionary *payload) {
         [self.eventsTableVC postNewEventWithPayload:payload];
     }];
 }

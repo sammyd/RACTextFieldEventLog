@@ -10,7 +10,7 @@
 
 @interface SCEventTableViewCell : UITableViewCell
 
-- (void)setEventPayload:(NSString *)payload;
+- (void)setEventPayload:(NSDictionary *)payload;
 - (void)animateAppearance;
 
 @end

@@ -27,7 +27,7 @@
 }
 
 #pragma mark - API Methods
-- (void)postNewEventWithPayload:(NSString *)payload
+- (void)postNewEventWithPayload:(NSDictionary *)payload
 {
     [self.eventArray insertObject:payload atIndex:0];
     self.shouldHighlightFirstRow = YES;
